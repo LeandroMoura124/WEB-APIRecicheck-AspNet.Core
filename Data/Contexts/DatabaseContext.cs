@@ -8,6 +8,8 @@ namespace APIRecicheck.Data.Contexts
     {
         public virtual DbSet<ColetaModel> Coletas { get; set; }
 
+        public virtual DbSet<UserModel> Users { get; set; }
+
         public DatabaseContext(DbContextOptions options) : base(options)
         {
         }
@@ -26,9 +28,13 @@ namespace APIRecicheck.Data.Contexts
                 entity.Property(e => e.dataColeta).HasColumnType("date").IsRequired();
                 entity.Property(e => e.quantidade).HasColumnType("NVARCHAR2(10)").IsRequired();
         
-    });
-
+            });
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserModel>()
+            .HasKey(u => u.UserId);
+
+
         }
     }
 }

@@ -3,6 +3,7 @@ using APIRecicheck.Data.Repository;
 using APIRecicheck.Models;
 using APIRecicheck.Services;
 using APIRecicheck.ViewModel;
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,25 @@ builder.Services.AddAuthentication(options =>
         };
     });
 #endregion
+
+
+
+#region versionamento api
+//builder.Services.AddApiVersioning(options =>
+//{
+//    options.DefaultApiVersion = new ApiVersion(1);
+//    options.ReportApiVersions = true;
+//    options.AssumeDefaultVersionWhenUnspecified = true;
+//    options.ApiVersionReader = ApiVersionReader.Combine(
+//        new UrlSegmentApiVersionReader(),
+//        new HeaderApiVersionReader("X-Api-Version"));
+//}).AddApiExplorer(options =>
+//{
+//    options.GroupNameFormat = "'v'V";
+//    options.SubstituteApiVersionInUrl = true;
+//});
+#endregion
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
