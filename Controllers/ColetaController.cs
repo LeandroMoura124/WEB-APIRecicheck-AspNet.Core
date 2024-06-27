@@ -1,14 +1,17 @@
-﻿using APIAmbiental.Models;
-using APIAmbiental.Services;
-using APIAmbiental.ViewModel;
+﻿using APIRecicheck.Data.Contexts;
+using APIRecicheck.Models;
+using APIRecicheck.Services;
+using APIRecicheck.ViewModel;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace APIAmbiental.Controllers
+namespace APIRecicheck.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ColetaController : ControllerBase
     {
         private readonly IColetaService _coletaService;
@@ -19,23 +22,43 @@ namespace APIAmbiental.Controllers
             _coletaService = condicoesAmbientaisService;
             _mapper = mapper;
         }
+        //[HttpGet]
+
+        //public ActionResult<IEnumerable<ColetaViewModel>> Get()
+        //{
+        //    var lista = _coletaService.ListarColetas();
+        //    var viewModelList = _mapper.Map<IEnumerable<ColetaViewModel>>(lista);
+
+
+        //    if (viewModelList == null || !viewModelList.Any())
+        //    {
+        //        return NoContent();
+        //    }
+        //    else
+        //    {
+        //        return Ok(viewModelList);
+        //    }
+        //}
+
         [HttpGet]
-        public ActionResult<IEnumerable<ColetaViewModel>> Get()
+        public ActionResult<IEnumerable<ColetaViewModel>> Get([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
-            var lista = _coletaService.ListarColetas();
-            var viewModelList = _mapper.Map<IEnumerable<ColetaViewModel>>(lista);
+            var clientes = _coletaService.ListarModel(pagina, tamanho);
+            var viewModelList = _mapper.Map<IEnumerable<ColetaViewModel>>(clientes);
+
+            var viewModel = new ColetaPaginacaoViewModel
+            {
+                Coletas = viewModelList,
+                CurrentPage = pagina,
+                PageSize = tamanho
+            };
 
 
-            if (viewModelList == null || !viewModelList.Any())
-            {
-                return NoContent();
-            }
-            else
-            {
-                return Ok(viewModelList);
-            }
+            return Ok(viewModel);
         }
+
         [HttpGet("{id}")]
+
         public ActionResult<ColetaViewModel> Get(int id)
         {
             var model = _coletaService.ObterColetaPorID(id);
@@ -76,6 +99,7 @@ namespace APIAmbiental.Controllers
 
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "operador,analista,gerente")]
         public ActionResult Delete([FromRoute] int id)
         {
                 _coletaService.DeletarColeta(id);
@@ -84,5 +108,8 @@ namespace APIAmbiental.Controllers
      
 
         }
+
+
+
     }
 }

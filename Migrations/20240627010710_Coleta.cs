@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace APIAmbiental.Migrations
+namespace APIRecicheck.Migrations
 {
     /// <inheritdoc />
     public partial class Coleta : Migration

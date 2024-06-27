@@ -1,9 +1,10 @@
-﻿using APIAmbiental.Models;
+﻿using APIRecicheck.Models;
 
-namespace APIAmbiental.Data.Repository
+namespace APIRecicheck.Data.Repository
 {
     public interface IColetaRepository
     {
+        IEnumerable<ColetaModel> GetAll(int page, int size);
         IEnumerable<ColetaModel> GetALL();
 
         ColetaModel GetById(int id);

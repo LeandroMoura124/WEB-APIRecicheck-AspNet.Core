@@ -1,4 +1,4 @@
-namespace APIAmbiental
+namespace APIRecicheck
 {
     public class WeatherForecast
     {
