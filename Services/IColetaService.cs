@@ -1,10 +1,13 @@
-﻿using APIAmbiental.Models;
+﻿using APIRecicheck.Data.Contexts;
+using APIRecicheck.Models;
 
-namespace APIAmbiental.Services
+namespace APIRecicheck.Services
 {
     public interface IColetaService
     {
 
+        IEnumerable<ColetaModel> ListarModel(int pagina = 0, int tamanho = 10);
+   
         IEnumerable<ColetaModel> ListarColetas();
 
         ColetaModel ObterColetaPorID(int id);

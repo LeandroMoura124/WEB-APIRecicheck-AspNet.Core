@@ -1,4 +1,4 @@
-﻿namespace APIAmbiental.ViewModel
+﻿namespace APIRecicheck.ViewModel
 {
     public class ColetaViewModel
     {

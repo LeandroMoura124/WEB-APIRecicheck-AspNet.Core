@@ -1,8 +1,8 @@
-﻿using APIAmbiental.Models;
+﻿using APIRecicheck.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace APIAmbiental.Data.Contexts
+namespace APIRecicheck.Data.Contexts
 {
     public class DatabaseContext : DbContext
     {

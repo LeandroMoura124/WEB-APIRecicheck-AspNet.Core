@@ -1,7 +1,8 @@
-﻿using APIAmbiental.Data.Contexts;
-using APIAmbiental.Models;
+﻿using APIRecicheck.Data.Contexts;
+using APIRecicheck.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace APIAmbiental.Data.Repository
+namespace APIRecicheck.Data.Repository
 {
 
 
@@ -40,6 +41,15 @@ namespace APIAmbiental.Data.Repository
         {
             _databaseContext.Coletas.Update(coletaModel);
             _databaseContext.SaveChanges();
+        }
+
+        public IEnumerable<ColetaModel> GetAll(int page, int size)
+        {
+            return _databaseContext.Coletas
+                            .Skip((page - 1) * page)
+                            .Take(size)
+                            .AsNoTracking()
+                            .ToList();
         }
     }
 }

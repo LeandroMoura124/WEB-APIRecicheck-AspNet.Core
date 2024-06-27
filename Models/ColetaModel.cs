@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace APIAmbiental.Models
+namespace APIRecicheck.Models
 {
     public class ColetaModel
     {
