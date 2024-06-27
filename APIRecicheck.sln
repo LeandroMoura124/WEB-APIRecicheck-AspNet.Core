@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIAmbiental", "APIAmbiental.csproj", "{850346EE-A9DA-41F0-9873-08E65742BABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIRecicheck", "APIRecicheck.csproj", "{850346EE-A9DA-41F0-9873-08E65742BABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
