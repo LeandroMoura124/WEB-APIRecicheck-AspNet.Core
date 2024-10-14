@@ -1,0 +1,3 @@
+[submodule "APIRecicheck"]
+    path = APIRecicheck
+    url = https://github.com/LeandroMoura124/WEB-APIRecicheck-AspNet.Core
